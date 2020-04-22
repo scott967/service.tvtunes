@@ -4,24 +4,19 @@ import sys
 import traceback
 import xbmc
 import xbmcgui
-
-# Add JSON support for queries
-if sys.version_info < (2, 7):
-    import simplejson
-else:
-    import json as simplejson
+import json as simplejson
 
 # Import the common settings
-from settings import Settings
-from settings import log
-from settings import os_path_join
-from settings import os_path_split
-from settings import normalize_string
-from settings import WindowShowing
+from .settings import Settings
+from .settings import log
+from .settings import os_path_join
+from .settings import os_path_split
+from .settings import normalize_string
+from .settings import WindowShowing
 
-from themeFinder import ThemeFiles
-from themeFinder import MusicThemeFiles
-from themePlayer import ThemePlayer
+from .themeFinder import ThemeFiles
+from .themeFinder import MusicThemeFiles
+from .themePlayer import ThemePlayer
 
 
 #########################################################
@@ -354,7 +349,6 @@ class TunesBackend():
             dbid = xbmc.getInfoLabel("ListItem.DBID")
             # Get movies from Movie Set
             json_query = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovieSetDetails", "params": {"setid": %s, "properties": [ "thumbnail" ], "movies": { "properties":  [ "file", "title"], "sort": { "order": "ascending",  "method": "title" }} },"id": 1 }' % dbid)
-            json_query = unicode(json_query, 'utf-8', errors='ignore')
             json_query = simplejson.loads(json_query)
             if ("result" in json_query) and ('setdetails' in json_query['result']):
                 # Get the list of movies paths from the movie set

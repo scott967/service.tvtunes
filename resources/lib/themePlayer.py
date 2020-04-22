@@ -4,17 +4,12 @@ import sys
 import time
 import traceback
 import xbmc
-
-# Add JSON support for queries
-if sys.version_info < (2, 7):
-    import simplejson
-else:
-    import json as simplejson
+import json as simplejson
 
 # Import the common settings
-from settings import Settings
-from settings import log
-from settings import WindowShowing
+from .settings import Settings
+from .settings import log
+from .settings import WindowShowing
 
 
 ###################################

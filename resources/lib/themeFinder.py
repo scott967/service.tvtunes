@@ -8,12 +8,7 @@ import xbmc
 import xbmcgui
 import sys
 import xbmcvfs
-
-# Add JSON support for queries
-if sys.version_info < (2, 7):
-    import simplejson
-else:
-    import json as simplejson
+import json as simplejson
 
 # Import the common settings
 from settings import Settings
@@ -229,7 +224,6 @@ class NfoReader():
             playlistFile = "special://musicplaylists/" + playlistFile
 
         json_query = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "Files.GetDirectory", "params": { "directory": "%s", "media": "music" },  "id": 1}' % playlistFile)
-        json_query = unicode(json_query, 'utf-8', errors='ignore')
         json_query = simplejson.loads(json_query)
 
         if ("result" in json_query) and ('files' in json_query['result']):

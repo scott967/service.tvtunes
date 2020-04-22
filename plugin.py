@@ -2,28 +2,25 @@
 import sys
 import os
 import re
-import urllib
+import urllib.parse
+import urllib.request
 import urlparse
 import xbmc
 import xbmcgui
 import xbmcplugin
 import xbmcaddon
 import xbmcvfs
-
-if sys.version_info < (2, 7):
-    import simplejson
-else:
-    import json as simplejson
+import json as simplejson
 
 # Import the common settings
-from resources.lib.settings import Settings
-from resources.lib.settings import log
-from resources.lib.settings import os_path_join
-from resources.lib.settings import os_path_split
-from resources.lib.settings import list_dir
-from resources.lib.settings import normalize_string
-from resources.lib.settings import dir_exists
-from resources.lib.themeFinder import ThemeFiles
+from .resources.lib.settings import Settings
+from .resources.lib.settings import log
+from .resources.lib.settings import os_path_join
+from .resources.lib.settings import os_path_split
+from .resources.lib.settings import list_dir
+from .resources.lib.settings import normalize_string
+from .resources.lib.settings import dir_exists
+from .resources.lib.themeFinder import ThemeFiles
 
 ADDON = xbmcaddon.Addon(id='service.tvtunes')
 ICON = ADDON.getAddonInfo('icon')
@@ -51,7 +48,7 @@ class MenuNavigator():
 
     # Creates a URL for a directory
     def _build_url(self, query):
-        return self.base_url + '?' + urllib.urlencode(query)
+        return self.base_url + '?' + urllib.parse.urlencode(query)
 
     # Display the default list of items in the root menu
     def showRootMenu(self):
@@ -149,7 +146,6 @@ class MenuNavigator():
 
         json_query = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.%s", "params": {"properties": ["title", "file", "thumbnail", "fanart", "year"%s], "sort": { "method": "title" } }, "id": 1}' % (jsonGet, origTitleRequest))
 #        json_query = xbmc.executeJSONRPC('{"jsonrpc": "2.0", "method": "VideoLibrary.%s", "params": {"properties": ["title", "file", "thumbnail", "fanart", "imdbnumber", "year"%s], "sort": { "method": "title" } }, "id": 1}' % (jsonGet, origTitleRequest))
-        json_query = unicode(json_query, 'utf-8', errors='ignore')
         json_response = simplejson.loads(json_query)
         log(json_response)
         Videolist = []

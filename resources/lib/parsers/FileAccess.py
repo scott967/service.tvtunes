@@ -17,9 +17,7 @@ __addonid__   = __addon__.getAddonInfo('id')
 
 
 def ascii(string):
-    if isinstance(string, basestring):
-        if isinstance(string, unicode):
-           string = string.encode('ascii', 'ignore')
+    string = string.encode('ascii', 'ignore')
 
     return string
 
@@ -27,14 +25,12 @@ class FileAccess:
     @staticmethod
     def log(txt):
         if __addon__.getSetting( "logEnabled" ) == "true":
-            if isinstance (txt,str):
-                txt = txt.decode("utf-8")
             message = u'%s: %s' % (__addonid__, txt)
-            xbmc.log(msg=message.encode("utf-8"), level=xbmc.LOGDEBUG)
+            xbmc.log(msg=message, level=xbmc.LOGDEBUG)
 
 
     @staticmethod
-    def open(filename, mode, encoding = "utf-8"):
+    def open(filename, mode):
         fle = 0
         FileAccess.log("trying to open " + filename)
         
@@ -64,7 +60,7 @@ class FileAccess:
 
 
     @staticmethod
-    def openSMB(filename, mode, encoding = "utf-8"):
+    def openSMB(filename, mode):
         fle = 0
 
         if os.name.lower() == 'nt':

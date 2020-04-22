@@ -13,10 +13,8 @@ ADDON_ID = ADDON.getAddonInfo('id')
 # Common logging module
 def log(txt, debug_logging_enabled=True, loglevel=xbmc.LOGDEBUG):
     if ((ADDON.getSetting("logEnabled") == "true") and debug_logging_enabled) or (loglevel != xbmc.LOGDEBUG):
-        if isinstance(txt, str):
-            txt = txt.decode("utf-8")
         message = u'%s: %s' % (ADDON_ID, txt)
-        xbmc.log(msg=message.encode("utf-8"), level=loglevel)
+        xbmc.log(msg=message, level=loglevel)
 
 
 def normalize_string(text):
@@ -49,14 +47,6 @@ def os_path_join(dir, file):
 
     # Convert each argument - if an error, then it will use the default value
     # that was passed in
-    try:
-        dir = dir.decode("utf-8")
-    except:
-        pass
-    try:
-        file = file.decode("utf-8")
-    except:
-        pass
     return os.path.join(dir, file)
 
 
@@ -72,10 +62,6 @@ def os_path_isfile(workingPath):
 
     # Convert each argument - if an error, then it will use the default value
     # that was passed in
-    try:
-        workingPath = workingPath.decode("utf-8")
-    except:
-        pass
     try:
         return os.path.isfile(workingPath)
     except:
@@ -147,8 +133,7 @@ class WindowShowing():
 
     @staticmethod
     def isVideoLibrary():
-        # For now check for both videolibrary (before v17) and videos (v17 onwards)
-        return xbmc.getCondVisibility("Window.IsVisible(videos)") or xbmc.getCondVisibility("Window.IsVisible(videolibrary)") or WindowShowing.isTvTunesOverrideTvShows() or WindowShowing.isTvTunesOverrideMovie() or WindowShowing.isTvTunesOverrideContinuePlaying()
+        return xbmc.getCondVisibility("Window.IsVisible(videos)") or WindowShowing.isTvTunesOverrideTvShows() or WindowShowing.isTvTunesOverrideMovie() or WindowShowing.isTvTunesOverrideContinuePlaying()
 
     @staticmethod
     def isMovieInformation():
@@ -331,7 +316,7 @@ class Settings():
 
     @staticmethod
     def getCustomPath():
-        return ADDON.getSetting("custom_path").decode("utf-8")
+        return ADDON.getSetting("custom_path")
 
     @staticmethod
     def getThemeVolume():

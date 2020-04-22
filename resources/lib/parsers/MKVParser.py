@@ -7,7 +7,7 @@
 import os, struct
 import traceback
 
-from FileAccess import FileAccess
+from .FileAccess import FileAccess
 
 
 

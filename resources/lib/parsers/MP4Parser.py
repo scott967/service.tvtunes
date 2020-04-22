@@ -6,7 +6,7 @@
 
 import os, struct
 
-from FileAccess import FileAccess
+from .FileAccess import FileAccess
 
 
 class MP4DataBlock:
