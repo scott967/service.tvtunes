@@ -3,11 +3,7 @@ import os
 import sys
 import xbmc
 import xbmcaddon
-
-if sys.version_info >= (2, 7):
-    import json
-else:
-    import simplejson as json
+import json
 
 # Import the common settings
 from resources.lib.settings import log
@@ -16,7 +12,7 @@ from resources.lib.backend import TunesBackend
 
 ADDON = xbmcaddon.Addon(id='service.tvtunes')
 CWD = ADDON.getAddonInfo('path')
-LIB_DIR = xbmc.translatePath(os.path.join(CWD, 'resources', 'lib')
+LIB_DIR = xbmc.translatePath(os.path.join(CWD, 'resources', 'lib'))
 
 
 # Class to detect when something in the system has changed

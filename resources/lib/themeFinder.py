@@ -11,16 +11,16 @@ import xbmcvfs
 import json as simplejson
 
 # Import the common settings
-from settings import Settings
-from settings import log
-from settings import os_path_join
-from settings import os_path_split
-from settings import list_dir
-from settings import dir_exists
-from settings import os_path_isfile
-from settings import normalize_string
+from .settings import Settings
+from .settings import log
+from .settings import os_path_join
+from .settings import os_path_split
+from .settings import list_dir
+from .settings import dir_exists
+from .settings import os_path_isfile
+from .settings import normalize_string
 
-from VideoParser import VideoParser
+from .VideoParser import VideoParser
 
 
 #############################################
