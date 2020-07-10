@@ -41,13 +41,14 @@
 		<setting id="flac" type="bool" label="FLAC" visible="eq(-4,true)" subsetting="true" default="true"/>
 		<setting id="m4a" type="bool" label="M4A" visible="eq(-5,true)" subsetting="true" default="true"/>
 		<setting id="wav" type="bool" label="WAV" visible="eq(-6,true)" subsetting="true" default="true"/>
-		<setting label="32083" type="lsep" visible="eq(-7,true)"/>
-		<setting id="mp4" type="bool" label="MP4" visible="eq(-8,true)" subsetting="true" default="true"/>
-		<setting id="mkv" type="bool" label="MKV" visible="eq(-9,true)" subsetting="true" default="true"/>
-		<setting id="avi" type="bool" label="AVI" visible="eq(-10,true)" subsetting="true" default="true"/>
-		<setting id="mov" type="bool" label="MOV" visible="eq(-11,true)" subsetting="true" default="true"/>
-		<setting id="m2ts" type="bool" label="M2TS" visible="eq(-12,true)" subsetting="true" default="true"/>
-		<setting id="webm" type="bool" label="WebM" visible="eq(-13,true)" subsetting="true" default="true"/>
+		<setting id="opus" type="bool" label="OPUS" visible="eq(-7,true)" subsetting="true" default="true"/>
+		<setting label="32083" type="lsep" visible="eq(-8,true)"/>
+		<setting id="mp4" type="bool" label="MP4" visible="eq(-9,true)" subsetting="true" default="true"/>
+		<setting id="mkv" type="bool" label="MKV" visible="eq(-10,true)" subsetting="true" default="true"/>
+		<setting id="avi" type="bool" label="AVI" visible="eq(-11,true)" subsetting="true" default="true"/>
+		<setting id="mov" type="bool" label="MOV" visible="eq(-12,true)" subsetting="true" default="true"/>
+		<setting id="m2ts" type="bool" label="M2TS" visible="eq(-13,true)" subsetting="true" default="true"/>
+		<setting id="webm" type="bool" label="WebM" visible="eq(-14,true)" subsetting="true" default="true"/>
 		<setting id="playVideoThemeRules" visible="eq(-6,true)|eq(-5,true)|eq(-4,true)|eq(-3,true)|eq(-2,true)|eq(-1,true)" type="enum" label="32085" lvalues="32086|32087|32088" default="0"/>
 		<setting id="repeatSingleAudioAfterVideo" type="bool" label="32090" visible="eq(-1,1)" subsetting="true" default="false"/>
 		<setting id="blockChangeInRefreshRate" type="bool" label="32033" visible="eq(-8,true)|eq(-7,true)|eq(-6,true)|eq(-5,true)|eq(-4,true)|eq(-3,true)" default="false"/>

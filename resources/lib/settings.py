@@ -368,6 +368,8 @@ class Settings():
                 fileTypes = fileTypes + "|wav"
             if(ADDON.getSetting("wav") == 'true'):
                 fileTypes = fileTypes + "|wav"
+            if(ADDON.getSetting("opus") == 'true'):
+                fileTypes = fileTypes + "|opus"
         if not audioOnly:
             videoFileTypes = Settings.getVideoThemeFileExtensions()
             if videoFileTypes not in [None, ""]:
