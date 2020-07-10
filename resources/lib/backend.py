@@ -102,7 +102,8 @@ class TunesBackend():
     def runAsAService(self):
         logVideoLibraryNotShowing = True
 
-        while not xbmc.abortRequested:
+        monitor = xbmc.Monitor()
+        while not monitor.abortRequested():
             # Wait a little before starting the check each time
             xbmc.sleep(200)
 

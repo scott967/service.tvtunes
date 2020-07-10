@@ -44,6 +44,8 @@ class ThemePlayer(xbmc.Player):
 
         # Mark the initial refresh rate as unset
         self.original_refreshrate = 0
+        
+        self.monitor = xbmc.Monitor()
 
         xbmc.Player.__init__(self, *args)
 
@@ -158,14 +160,14 @@ class ThemePlayer(xbmc.Player):
 
                 # Wait until playing has started
                 maxLoop = 100
-                while (not self.isPlaying()) and (not xbmc.abortRequested) and (maxLoop > 0):
+                while (not self.isPlaying()) and (not self.monitor.abortRequested()) and (maxLoop > 0):
                     maxLoop = maxLoop - 1
                     xbmc.sleep(30)
 
                 for step in range(0, (numSteps - 1)):
                     # If the system is going to be shut down then we need to reset
                     # everything as quickly as possible
-                    if WindowShowing.isShutdownMenu() or xbmc.abortRequested:
+                    if WindowShowing.isShutdownMenu() or self.monitor.abortRequested():
                         log("ThemePlayer: Shutdown menu detected, cancelling fade in")
                         break
                     vol = cur_vol_perc + vol_step
@@ -270,16 +272,16 @@ class ThemePlayer(xbmc.Player):
             # the number of step to drop the volume in
             numSteps = 10
             if fastFade:
-                numSteps = numSteps / 2
+                numSteps = numSteps // 2
             elif slowFade:
                 numSteps = numSteps * 4
 
-            vol_step = cur_vol / numSteps
+            vol_step = cur_vol // numSteps
             # do not mute completely else the mute icon shows up
             for step in range(0, (numSteps - 1)):
                 # If the system is going to be shut down then we need to reset
                 # everything as quickly as possible
-                if WindowShowing.isShutdownMenu() or xbmc.abortRequested:
+                if WindowShowing.isShutdownMenu() or self.monitor.abortRequested():
                     log("ThemePlayer: Shutdown menu detected, cancelling fade out")
                     break
                 vol = cur_vol - vol_step
