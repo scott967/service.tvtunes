@@ -149,9 +149,9 @@ class ThemePlayer(xbmc.Player):
                 # the number of step to drop the volume in
                 numSteps = 10
                 if fastFade:
-                    numSteps = numSteps / 2
+                    numSteps = numSteps // 2
 
-                vol_step = targetVol / numSteps
+                vol_step = targetVol // numSteps
                 # Reduce the volume before starting
                 # do not mute completely else the mute icon shows up
                 self._setVolume(1)
