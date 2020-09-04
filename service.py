@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-import xbmc
+import xbmc, xbmcvfs
 import xbmcaddon
 import json
 
@@ -12,7 +12,7 @@ from resources.lib.backend import TunesBackend
 
 ADDON = xbmcaddon.Addon(id='service.tvtunes')
 CWD = ADDON.getAddonInfo('path')
-LIB_DIR = xbmc.translatePath(os.path.join(CWD, 'resources', 'lib'))
+LIB_DIR = xbmcvfs.translatePath(os.path.join(CWD, 'resources', 'lib'))
 
 
 # Class to detect when something in the system has changed

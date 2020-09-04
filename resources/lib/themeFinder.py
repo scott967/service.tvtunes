@@ -195,7 +195,7 @@ class NfoReader():
                 playlistFile = localFile
             else:
                 # default to the music playlist directory if not local
-                playlistFile = os_path_join(xbmc.translatePath("special://musicplaylists"), playlistFile)
+                playlistFile = os_path_join(xbmcvfs.translatePath("special://musicplaylists"), playlistFile)
 
         log("NfoReader: playlist file = %s" % playlistFile, self.debug_logging_enabled)
 

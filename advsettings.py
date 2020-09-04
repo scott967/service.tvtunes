@@ -35,7 +35,7 @@ class AdvSettings():
 
     def __init__(self):
         # Find out where the advancedsettings.xml file is located
-        self.advSettingsXmlFile = xbmc.translatePath('special://masterprofile/advancedsettings.xml')
+        self.advSettingsXmlFile = xbmcvfs.translatePath('special://masterprofile/advancedsettings.xml')
         log("Advancedsettings.xml Location: %s" % self.advSettingsXmlFile)
         self.bak_timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
 
